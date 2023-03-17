@@ -1,3 +1,4 @@
+const products = require('../models/products');
 const ServiceModel = require('../models/products');
 
 const productsController = {
@@ -12,7 +13,7 @@ const productsController = {
       await ServiceModel.create(products.req);
     } 
     catch (err) {
-      return res.status(500).json(err);
+      console.log(err)
     }
   },
 
@@ -97,10 +98,10 @@ const productsController = {
         return null
       }
 
-      return response;
+      return product;
     } 
     catch (err) {
-      return res.status(500).json(err);
+      console.log(err)
     }
   }
 
