@@ -17,8 +17,8 @@ Project aimed at using data from the Open Food Facts project, with a CRON system
 Clone the repo and install the dependencies.
 
 ```bash
-git clone https://github.com/contentful/the-example-app.nodejs.git
-cd the-example-app.nodejs
+git clone https://github.com/Rafael-Ovidio-Leal/BackEnd-Project
+cd BackEnd_Project
 ```
 
 ```bash
@@ -48,7 +48,7 @@ You can also run this app as a Docker container:
 Step 1: Clone the repo
 
 ```bash
-git clone https://github.com/contentful/the-example-app.nodejs.git
+git clone https://github.com/Rafael-Ovidio-Leal/BackEnd-Project
 ```
 
 Step 2: Build the Docker image
