@@ -4,6 +4,10 @@ services:
   node:
     container_name: NODEJS_SERVER
     restart: always
+    environment:
+      DB_CONNECTION: ${DB_CONNECTION}
+      BASE_URL_API: ${BASE_URL_API}
+      BASE_URL_FILES: ${BASE_URL_FILES}
     build: .
     ports:
       - 9000:9000
