@@ -12,22 +12,29 @@ const main = async () => {
 			'0 0 * * *',
 			async function() {
 
-				var sliceA = 0;
-				var sliceB = 100;
-
 				const { body } = await got(process.env.BASE_URL_FILES, {
 					responseType: 'buffer',
 				});
 				files = body.toString().split("\n");
 
+				Object.keys(files).forEach(key => {
+					if (files[key] === null || files[key] == '') {
+						delete files[key];
+					}
+				});
+
 				for(var i = 0; i < Object.keys(files).length;){
-					const data = await convert(process.env.BASE_URL_API + files[i]);
+
+					var sliceA = 0;
+					var sliceB = 100;
+					
+					let data = await convert(process.env.BASE_URL_API + files[i]);
 					var count = 0;
 
-					for(var y = 0; i < Object.keys(data).length;){
-						const resp = data.slice(sliceA, sliceB);
+					for(var y = 0; y < Object.keys(data).length;){
+						let resp = data.slice(sliceA, sliceB);
 
-						for(var x = 0; i < Object.keys(resp).length;){
+						for(var x = 0; x < Object.keys(resp).length;){
 							const val = await productsController.getByCode(resp[x].code)
 
 							if(val == null){
@@ -48,17 +55,20 @@ const main = async () => {
 						if(count >= 100){
 							break;
 						}else{
+							val = null;
 							y++;
 						}
 					}
-					
-					if(sliceB >= Object.keys(files).leght){
+
+					if(count >= 100 && i < Object.keys(files).length){
+						data = null;
 						sliceA = 0;
-						sliceB = 99;
+						sliceB = 100;
 						i++;
+					}else{
+						break; 
 					}
 					
-					break;
 				}
 
 				cronController.create();
