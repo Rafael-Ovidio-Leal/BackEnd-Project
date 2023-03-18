@@ -2,6 +2,8 @@
 
 This is a challenge by [Coodesh](https://coodesh.com/)
 
+[Apresentação do Projeto](https://www.loom.com/share/7f669b1a315644709584331367e29809)
+
 ## What is Contentful?
 
 Project aimed at using data from the Open Food Facts project, with a CRON system to import data once a day from the [Open Food Facts](https://br.openfoodfacts.org/data) database. It also includes routes for paginated product search, searching for specific products based on their "code," as well as modification and removal of products from the database.
@@ -31,7 +33,13 @@ Step 1: Go to the application root and create .ENV with the following variables 
 
 Step 2: Populate env variables [`BASE_URL_API`](https://challenges.coode.sh/food/data/json/) URL to get .gz files, [`BASE_URl_FILES`](https://challenges.coode.sh/food/data/json/index.txt) URL with all available files. Replace the `DB_CONNECTION` with a MongoDB database string connection.
 
-Step 3: To start the express server, run the following
+Step 3: before running the application it is necessary to install the packages
+
+```bash
+npm install
+```
+
+Step 4: To start the express server, run the following
 
 ```bash
 npm run start
@@ -62,5 +70,13 @@ Step 3: Run the Docker container locally:
 ```bash
 docker-compose up -d
 ```
+
+
+If you wanted to terminate docker locally::
+
+```bash
+docker-compose down
+```
+
 
 
